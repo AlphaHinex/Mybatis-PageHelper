@@ -25,6 +25,7 @@
 package com.github.pagehelper.mapper;
 
 import com.github.pagehelper.model.Country;
+import com.github.pagehelper.model.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +34,10 @@ import java.util.Map;
  * @author liuzh
  */
 public class ProviderMethod {
+
+    public String selectSimple(String str) {
+        return "select * from user where name like '%" + str + "'";
+    }
 
     @SuppressWarnings("unchecked")
     public String select(Map<String, Object> map) {
@@ -57,6 +62,22 @@ public class ProviderMethod {
         }
         if (country.getCountryname() != null) {
             sbSql.append(" and countryname = #{countryname} ");
+        }
+        sbSql.append("order by id");
+        return sbSql.toString();
+    }
+
+    public String selectUser(User user) {
+        StringBuilder sbSql = new StringBuilder();
+        sbSql.append("select * from user where 1=1 ");
+        if (user.getId() > 0) {
+            sbSql.append(" and id = #{id} ");
+        }
+        if (user.getPy() != null) {
+            sbSql.append(" and py = #{py} ");
+        }
+        if (user.getName() != null) {
+            sbSql.append(" and name = #{name} ");
         }
         sbSql.append("order by id");
         return sbSql.toString();
