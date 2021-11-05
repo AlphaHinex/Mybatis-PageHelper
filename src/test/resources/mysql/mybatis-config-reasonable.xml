@@ -55,13 +55,14 @@
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://localhost:3306/pagehelper"/>
                 <property name="username" value="root"/>
-                <property name="password" value=""/>
+                <property name="password" value="3426"/>
             </dataSource>
         </environment>
     </environments>
 
     <mappers>
         <mapper resource="com/github/pagehelper/mapper/CountryMapper.xml"/>
+        <mapper resource="com/github/pagehelper/mapper/UserMapper.xml"/>
     </mappers>
 
 </configuration>
